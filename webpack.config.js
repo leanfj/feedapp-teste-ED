@@ -7,7 +7,7 @@ const Assets = require("./assets");
 
 module.exports = {
   entry: {
-    app: "./public/index.html"
+    app: "./public/js/main.js"
   },
   output: {
     path: __dirname + "/public/",
