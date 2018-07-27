@@ -7,5 +7,10 @@ angular.module("feedReaderApp", ["ngRoute"]).config([
       templateUrl: "partials/feeds.html",
       controller: "FeedsController"
     });
+    $routeProvider.when("/feed/:feedId", {
+      templateUrl: "partials/feed.html",
+      controller: "FeedController"
+    });
+    $routeProvider.otherwise({ redirectTo: "/feeds" });
   }
 ]);

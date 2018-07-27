@@ -6,15 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Feed Reader App</title>
-  <base href="/">
+  <link rel="stylesheet" href="./vendor/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body>
-  <div ng-view></div>
+  <div class="container" ng-view></div>
+  <script src="./vendor/js/materialize.min.js"></script>
   <script src="./vendor/js/angular.min.js"></script>
   <script src="./vendor/js/angular-route.min.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/controllers/FeedsController.js"></script>
+  <script src="./js/controllers/FeedController.js"></script>
 </body>
 
 </html>

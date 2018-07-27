@@ -1,3 +1,28 @@
-<h1>Bem vindo ao Feed Reader App</h1>
-<p>Feeds Cadastrados: {{total}}</p>
-<button ng-click="addOne()">Add One</button>
+<div class="row">
+  <h1 class="center-align">Feed Reader App</h1>
+  <button class="waves-effect waves-light btn col s4 offset-s4" ng-click="addOne()">Add One</button>
+  <input ng-model="filtro" type="search" placeholder="Busca" class="">
+  <p>Feeds Cadastrados: {{total}}</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome Feed</th>
+        <th>URL</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="feed in feeds | filter: filtro">
+        <td>{{feed.name}}</td>
+        <td>
+          <a href="{{feed.url}}">{{feed.url}}</a>
+        </td>
+        <td>
+          <button class="waves-effect waves-light btn red darken-1">
+            <i class="material-icons">delete</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
