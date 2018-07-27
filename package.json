@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "webpack --config webpack.config.js && nodemon server.js"
   },
   "author": "Leandro Ferreira",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.7.2",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
@@ -17,6 +18,9 @@
     "method-override": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.3"
+    "copy-webpack-plugin": "^4.5.2",
+    "nodemon": "^1.18.3",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0"
   }
 }
