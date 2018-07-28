@@ -13,6 +13,11 @@ let feeds = [
     _id: 3,
     name: "Reuters world news	",
     url: "http://feeds.reuters.com/Reuters/worldNews"
+  },
+  {
+    _id: 4,
+    name: "Jovem Nerd SITE",
+    url: "https://jovemnerd.com.br/feed/"
   }
 ];
 

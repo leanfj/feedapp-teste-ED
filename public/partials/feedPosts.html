@@ -1,11 +1,12 @@
 <div class="row">
   <h1>{{feed.name}}</h1>
+  <p ng-hide="feedPosts.length"> Carregando...</p>
   <ul class="collapsible">
     <li ng-repeat="post in feedPosts">
       <div class="collapsible-header">{{post.title}}</div>
       <div class="collapsible-body">
         <p>{{post.content}}</p>
-        <a href="{{post.title}}" class="waves-effect waves-light btn">LINK</a>
+        <a href="{{post.link}}" class="waves-effect waves-light btn">LINK</a>
         <p>
           <label>
             <input type="checkbox" />
