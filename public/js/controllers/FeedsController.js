@@ -1,23 +1,38 @@
 angular
   .module("feedReaderApp")
-  .controller("FeedsController", function($scope, $http) {
+  .controller("FeedsController", function($scope, $resource) {
     $scope.feeds = [];
-    $scope.total = 0;
 
     $scope.filtro = "";
 
-    $scope.addOne = () => {
-      $scope.total++;
-    };
+    $scope.message = { text: "" };
 
-    $http.get("/feeds").then(
-      function(response) {
-        console.log(response.data);
-        $scope.feeds = response.data;
-      },
-      function(error) {
-        console.log("Error ao obter lista de Feeds");
+    const Feeds = $resource("/feeds");
+
+    function findFeeds() {
+      Feeds.query(
+        function(response) {
+          $scope.feeds = response;
+        },
+        function(error) {
+          console.log("Error ao obter lista de Feeds");
+          console.log(error.status);
+          $scope.message = {
+            text: "Error ao obter lista de Feeds"
+          };
+        }
+      );
+    }
+    findFeeds();
+
+    const Feed = $resource("/feeds/:id");
+    $scope.delete = function(feed) {
+      Feed.delete({ id: feed._id }, findFeeds, function(error) {
+        console.log("Não foi possivel deleter o feed");
         console.log(error);
-      }
-    );
+        $scope.message = {
+          text: "Não foi possivel deleter o Feed"
+        };
+      });
+    };
   });

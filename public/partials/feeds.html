@@ -1,24 +1,43 @@
 <div class="row">
   <h1 class="center-align">Feed Reader App</h1>
-  <button class="waves-effect waves-light btn col s4 offset-s4" ng-click="addOne()">Add One</button>
+  <a class="waves-effect waves-light btn col s4 offset-s4" ng-href="#/feed">Adicionar Feed</a>
   <input ng-model="filtro" type="search" placeholder="Busca" class="">
-  <p>Feeds Cadastrados: {{total}}</p>
+  <p ng-show="feeds.length">Feeds Cadastrados: {{feeds.length}}</p>
+  <p ng-show="message.text" class="center-align card-panel red lighten-2"> {{message.text}}</p>
   <table>
     <thead>
       <tr>
         <th>Nome Feed</th>
         <th>URL</th>
         <th></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
+      <tr ng-hide="feeds.length">
+        <td></td>
+        <td>Não há Feeds Cadastrados</td>
+        <td></td>
+      </tr>
       <tr ng-repeat="feed in feeds | filter: filtro">
         <td>{{feed.name}}</td>
         <td>
           <a href="{{feed.url}}">{{feed.url}}</a>
         </td>
         <td>
-          <button class="waves-effect waves-light btn red darken-1">
+          <a class="waves-effect waves-light btn teal" ng-href="#/feedPosts/{{feed._id}}">
+            <i class="material-icons">remove_red_eye
+            </i>
+          </a>
+        </td>
+        <td>
+          <a class="waves-effect waves-light btn yellow darken-3" ng-href="#/feed/{{feed._id}}">
+            <i class="material-icons">edit</i>
+          </a>
+        </td>
+        <td>
+          <button class="waves-effect waves-light btn red darken-1" ng-click="delete(feed)">
             <i class="material-icons">delete</i>
           </button>
         </td>

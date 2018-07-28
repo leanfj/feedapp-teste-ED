@@ -1,1 +1,21 @@
-<h1>Feed</h1>
+<div class="row">
+  <h1>Feed</h1>
+  <form class="col s12" ng-submit="saveFeed()">
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="Nome Feed" id="feed_name" type="text" class="validate" ng-model="feed.name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="Feed URL" id="feed_url" type="url" class="validate" ng-model="feed.url">
+      </div>
+    </div>
+    <div class="row">
+      <button type="submit" class="waves-effect waves-light btn light-blue">
+        <i class="material-icons">save</i>
+      </button>
+    </div>
+  </form>
+  <a href="/" class="waves-effect waves-light btn">Voltar</a>
+</div>

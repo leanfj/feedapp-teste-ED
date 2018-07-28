@@ -1,5 +1,13 @@
-module.exports = app => {
+module.exports = function(app) {
   const controller = app.controllers.feeds;
-  app.get("/feeds", controller.listFeeds);
-  app.get("/feeds/:id", controller.getFeed);
+  app
+    .route("/feeds")
+    .get(controller.listFeeds)
+    .post(controller.saveFeed);
+
+  app
+    .route("/feeds/:id")
+    .get(controller.getFeed)
+    .delete(controller.deleteFeed)
+    .post(controller.saveFeed);
 };

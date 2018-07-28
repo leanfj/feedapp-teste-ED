@@ -1,0 +1,21 @@
+<div class="row">
+  <h1>{{feed.name}}</h1>
+  <ul class="collapsible">
+    <li ng-repeat="post in feedPosts">
+      <div class="collapsible-header">{{post.title}}</div>
+      <div class="collapsible-body">
+        <p>{{post.content}}</p>
+        <a href="{{post.title}}" class="waves-effect waves-light btn">LINK</a>
+        <p>
+          <label>
+            <input type="checkbox" />
+            <span>Lido</span>
+          </label>
+        </p>
+      </div>
+    </li>
+  </ul>
+
+  <br>
+  <a href="/" class="waves-effect waves-light btn">Voltar</a>
+</div>
