@@ -3,20 +3,20 @@ angular
   .controller("FeedPostsController", function(
     $scope,
     $routeParams,
-    $resource,
+    Feed,
     $http
   ) {
     console.log($routeParams.feedId);
 
-    const Feed = $resource("/feeds/:id");
     Feed.get(
       { id: $routeParams.feedId },
       function(feed) {
         $scope.feed = feed;
+        //rss to json online converter
         let feedUrl =
           "https://api.rss2json.com/v1/api.json?rss_url=" +
           $scope.feed.url +
-          "&api_key=n8joy6fhvykncrpntls7fvyw9pzlowpnvxyjja2d&order_by=pubDate&order_dir=desc&count=1000";
+          "&api_key=n8joy6fhvykncrpntls7fvyw9pzlowpnvxyjja2d&order_by=pubDate&order_dir=desc&count=10";
 
         $http.get(feedUrl).then(function(response) {
           console.log(response.data.items);

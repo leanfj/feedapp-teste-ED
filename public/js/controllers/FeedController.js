@@ -3,12 +3,10 @@ angular
   .controller("FeedController", function(
     $scope,
     $routeParams,
-    $resource,
+    Feed,
     $location
   ) {
     console.log($routeParams.feedId);
-
-    const Feed = $resource("/feeds/:id");
 
     if ($routeParams.feedId) {
       Feed.get(

@@ -1,16 +1,14 @@
 angular
   .module("feedReaderApp")
-  .controller("FeedsController", function($scope, $resource) {
+  .controller("FeedsController", function($scope, Feed) {
     $scope.feeds = [];
 
     $scope.filtro = "";
 
     $scope.message = { text: "" };
 
-    const Feeds = $resource("/feeds");
-
     function findFeeds() {
-      Feeds.query(
+      Feed.query(
         function(response) {
           $scope.feeds = response;
         },
@@ -25,7 +23,6 @@ angular
     }
     findFeeds();
 
-    const Feed = $resource("/feeds/:id");
     $scope.delete = function(feed) {
       Feed.delete({ id: feed._id }, findFeeds, function(error) {
         console.log("Não foi possivel deleter o feed");
