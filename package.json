@@ -18,7 +18,8 @@
     "express": "^4.16.3",
     "express-load": "^1.1.16",
     "materialize-css": "^1.0.0-rc.2",
-    "method-override": "^3.0.0"
+    "method-override": "^3.0.0",
+    "mongoose": "^5.2.5"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.5.2",
