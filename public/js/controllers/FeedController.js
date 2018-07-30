@@ -7,7 +7,6 @@ angular
     $location
   ) {
     console.log($routeParams.feedId);
-
     if ($routeParams.feedId) {
       Feed.get(
         { id: $routeParams.feedId },
