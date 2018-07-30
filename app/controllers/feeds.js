@@ -1,5 +1,6 @@
 module.exports = function(app) {
   const Feed = app.models.feed;
+  const Post = app.models.post;
 
   const controller = {};
 
@@ -34,6 +35,16 @@ module.exports = function(app) {
   controller.deleteFeed = function(req, res) {
     let _id = req.params.id;
     Feed.remove({ _id: _id })
+      .exec()
+      .then(
+        function() {
+          res.end();
+        },
+        function(error) {
+          return console.log(error);
+        }
+      );
+    Post.remove({ feed: _id })
       .exec()
       .then(
         function() {
