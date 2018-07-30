@@ -9,8 +9,8 @@
         <a href="{{post.link}}" class="waves-effect waves-light btn">LINK</a>
         <p>
           <label>
-            <input type="checkbox" />
-            <span>Lido</span>
+            <input type="checkbox" ng-model="post.read" checked="post.read" ng-click="postRead(post)" />
+            <span>Marcar como lido</span>
           </label>
         </p>
       </div>

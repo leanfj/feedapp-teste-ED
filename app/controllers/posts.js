@@ -20,7 +20,8 @@ module.exports = function(app) {
   };
 
   controllerPosts.savePosts = function(req, res) {
-    Posts.create(req.body).then(
+    let _postGuid = req.params.guid;
+    Posts.update({ guid: _postGuid }, req.body, { upsert: true }).then(
       function(feed) {
         res.status(201).json(feed);
       },

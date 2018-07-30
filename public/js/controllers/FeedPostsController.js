@@ -5,6 +5,7 @@ angular
     $routeParams,
     Feed,
     Post,
+    FeedPosts,
     $http
   ) {
     console.log($routeParams.feedId);
@@ -28,9 +29,11 @@ angular
             response.data.items[i].feed = $routeParams.feedId;
 
             $scope.Posts = new Post(response.data.items[i]);
-
             savePosts = function() {
-              $scope.Posts.$save({ id: $routeParams.feedId });
+              $scope.Posts.$save({
+                id: $routeParams.feedId,
+                guid: response.data.items[i].guid
+              });
             };
 
             savePosts();
@@ -51,8 +54,17 @@ angular
         }
       );
     });
+    $scope.postRead = function(post) {
+      $scope.Posts = new Post();
+      !post.read ? ($scope.Posts.read = true) : ($scope.Posts.read = false);
+      $scope.Posts.$save({
+        id: $routeParams.feedId,
+        guid: post.guid
+      });
+    };
+
     setTimeout(function() {
-      Post.query({ id: $routeParams.feedId }, function(posts) {
+      FeedPosts.query({ id: $routeParams.feedId }, function(posts) {
         $scope.feedPosts = posts;
       });
     }, 1500);

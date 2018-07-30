@@ -13,8 +13,7 @@ module.exports = function(app) {
     .delete(controller.deleteFeed)
     .post(controller.saveFeed);
 
-  app
-    .route("/posts/:id")
-    .get(controllerPost.getPosts)
-    .post(controllerPost.savePosts);
+  app.route("/posts/:id/:guid").post(controllerPost.savePosts);
+
+  app.route("/posts/:id").get(controllerPost.getPosts);
 };

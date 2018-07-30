@@ -17,6 +17,9 @@ module.exports = function() {
     read: {
       type: Boolean
     },
+    guid: {
+      type: String
+    },
     feed: {
       type: mongoose.Schema.ObjectId,
       ref: "feeds"
